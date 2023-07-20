@@ -17,7 +17,7 @@ export class QuizService {
   }
 
 
-  async getQuizById(id): Promise<Quiz> {
+  async getQuizById(id:number): Promise<Quiz> {
     return await this.quizRepository.findOne({ where: { id: id }, relations: { questions: true } })
 
   }
