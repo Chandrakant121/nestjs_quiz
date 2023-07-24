@@ -13,6 +13,9 @@ import { ValidationPipe } from '@nestjs/common';
 // npm i @nestjs/typeorm typeorm
 // npm i pg
 
+// Config service
+//  npm i --save @nestjs/config
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);

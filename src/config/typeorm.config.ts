@@ -13,6 +13,6 @@ export const typeOrmConfig: TypeOrmModule = {
   entities: [
     __dirname + '/../**/*.entity{.ts,.js}',
   ],
-  // Do not use synchronize in production you will losse your data
+  // Do not use synchronize in production you will loose your data
   synchronize: true,
 }

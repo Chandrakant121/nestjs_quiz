@@ -11,13 +11,14 @@ export class QuizController {
     return this.quizService.getQuiz()
   }
 
-  // npm i class-validator => for Dto validations
-  // npm i class-transformer => for using pipes with validations
+
   @Get('/:id')
   async getQuizById(@Param('id', ParseIntPipe) id: number) {
     return this.quizService.getQuizById(id)
   }
 
+  // npm i class-validator => for Dto validations
+  // npm i class-transformer => for using pipes with validations
   @Post('/create-quiz')
   @UsePipes(ValidationPipe)
   @HttpCode(200)
