@@ -1,3 +1,4 @@
+import { OptionModule } from './modules/option/option.module';
 import { QuestionModule } from './modules/question/question.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -7,8 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 
 @Module({
-  imports: [
-    QuestionModule, QuizModule, TypeOrmModule.forRoot(typeOrmConfig)],
+  imports: [QuestionModule, QuizModule, OptionModule, TypeOrmModule.forRoot(typeOrmConfig)],
   controllers: [AppController],
   providers: [AppService],
 })
