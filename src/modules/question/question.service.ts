@@ -9,6 +9,12 @@ import { Quiz } from '../entity/quiz.entity';
 export class QuestionService {
   constructor(@InjectRepository(Question) private readonly questionRepository: Repository<Question>) { }
 
+
+  async findQuestionById(id: number) {
+    return await this.questionRepository.findOne({ where: { id: id }, relations: ['quiz', 'options'] })
+  }
+
+
   async createQuestion(question: CreateQuestionDto, quiz: Quiz) {
 
     const newQuestion = await this.questionRepository.save({ question: question.question })
@@ -17,6 +23,6 @@ export class QuestionService {
     quiz.questions = [...quiz.questions, newQuestion]
     await quiz.save()
 
-    return newQuestion 
+    return newQuestion
   }
 }
