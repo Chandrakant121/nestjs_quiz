@@ -7,8 +7,8 @@ export class QuizController {
   constructor(private readonly quizService: QuizService) { }
 
   @Get('/')
-  getQuiz() {
-    return this.quizService.getQuiz()
+  getAllQuiz() {
+    return this.quizService.getAllQuiz()
   }
 
 

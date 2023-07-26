@@ -15,4 +15,6 @@ export const typeOrmConfig: TypeOrmModule = {
   ],
   // Do not use synchronize in production you will loose your data
   synchronize: true,
+  // It will show all the query in console
+  logging: true
 }
