@@ -19,7 +19,7 @@ export class QuestionService {
 
     const newQuestion = await this.questionRepository.save({ question: question.question })
 
-    // quiz is array so we have to save old one and new one
+    // questions is array so we have to save old one and new one
     quiz.questions = [...quiz.questions, newQuestion]
     await quiz.save()
 
