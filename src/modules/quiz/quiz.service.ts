@@ -12,8 +12,9 @@ export class QuizService {
   async getAllQuiz() {
     // return await this.quizRepository.createQueryBuilder('q')
     //   .leftJoinAndSelect('q.questions', 'qt').getMany()
-    return await this.quizRepository.createQueryBuilder('q')
-      .leftJoinAndSelect('q.questions', 'qt').leftJoinAndSelect('qt.options', 'o').getMany()
+    // return await this.quizRepository.createQueryBuilder('q')
+    //   .leftJoinAndSelect('q.questions', 'qt').leftJoinAndSelect('qt.options', 'o').getMany()
+    return await this.quizRepository.find({ relations: ['questions', 'questions.options'] })
   }
 
   createQuiz(quizData) {
