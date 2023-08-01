@@ -16,8 +16,9 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       password: configService.get<string>('DB_PASSWORD'),
       database: configService.get('DB_DATABASE'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: true,
-      logging: true,
+        // Do not use synchronize in production you will loose your data
+        synchronize: true,
+        // It will show all the query in console
     };
   },
 };

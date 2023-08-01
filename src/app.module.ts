@@ -12,7 +12,10 @@ import { typeOrmAsyncConfig } from './modules/config/typeorm.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      //envFilePath we can set env file here default it will take .env
+    }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     QuizModule,
     OptionModule,
