@@ -13,12 +13,15 @@ export class UserService {
 
     // const salt = await bcrypt.genSalt()
     // const password = await bcrypt.hash(userRegister.password, salt)
-    // user.password=password 
+    // userRegister.password = password
+    // const { confirmPassword, ...rest } = userRegister;
+    // return await this.userRepository.save(rest)
 
     const user = new User()
     user.name = userRegister.name;
     user.email = userRegister.email;
     user.password = userRegister.password
     return await user.save()
+
   }
 }
