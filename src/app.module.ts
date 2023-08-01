@@ -1,3 +1,5 @@
+import { UserModule } from './modules/user/user.module';
+import { UserController } from './modules/user/user.controller';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,7 +8,6 @@ import { AppService } from './app.service';
 import { QuestionModule } from './modules/question/question.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { OptionModule } from './modules/option/option.module';
-import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { DataSource } from 'typeorm';
     QuizModule,
     OptionModule,
     QuestionModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

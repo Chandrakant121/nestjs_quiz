@@ -16,6 +16,9 @@ import { ValidationPipe } from '@nestjs/common';
 // Config service
 //  npm i --save @nestjs/config
 
+// User Registration
+// npm i bcrypt @types/bcrypt
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
