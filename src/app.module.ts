@@ -1,3 +1,4 @@
+import { AuthModule } from './modules/auth/auth.module';
 
 import { UserModule } from './modules/user/user.module';
 import { Module } from '@nestjs/common';
@@ -21,6 +22,7 @@ import { typeOrmAsyncConfig } from './modules/config/typeorm.config';
     OptionModule,
     QuestionModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

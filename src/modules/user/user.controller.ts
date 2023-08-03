@@ -1,4 +1,4 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, ValidationPipe, Request } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserRegistrationDto } from '../dto/user-register.dto';
 
@@ -11,4 +11,8 @@ export class UserController {
   async userRegistration(@Body(ValidationPipe) userRegister: UserRegistrationDto) {
     return await this.userService.userRegistration(userRegister)
   }
+  // @Post('/email')
+  // async getUserByEmail(@Request() req) {
+  //   return await this.userService.getUserByEmail(req.email)
+  // }
 }

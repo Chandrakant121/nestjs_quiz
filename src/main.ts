@@ -19,6 +19,14 @@ import { ValidationPipe } from '@nestjs/common';
 // User Registration
 // npm i bcrypt @types/bcrypt
 
+// Strategy and passport Authentication
+// npm i --D @types/passport-local @types/passport
+// npm install @nestjs/passport
+
+// JWT
+// npm i @nestjs/jwt passport-jwt
+//  npm i -D @types/passport-jwt  
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
