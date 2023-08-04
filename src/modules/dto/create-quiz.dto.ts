@@ -1,6 +1,6 @@
 import { IsNotEmpty, Length } from "class-validator"
 
-// npm i class-validator => for Dto valodations
+// npm i class-validator => for Dto validations
 // npm i class-transformer => for using pipes with validations
 // DTO's describe the shape of the request.
 export class CreateQuizDto {

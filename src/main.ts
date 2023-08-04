@@ -6,6 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 // Cli Command
 // nest g module modules/quiz
 // nest g controller modules/quiz
+
 // npm i class-validator => for Dto validations
 // npm i class-transformer => for using pipes with validations
 
