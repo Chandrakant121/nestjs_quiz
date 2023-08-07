@@ -1,7 +1,9 @@
 import { Body, Controller, Get, HttpCode, Param, ParseIntPipe, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
-
+import { ApiTags, ApiCreatedResponse, ApiBadRequestResponse } from '@nestjs/swagger';
+import { Quiz } from '../entity/quiz.entity';
+@ApiTags('Quiz')
 @Controller('quiz')
 export class QuizController {
   constructor(private readonly quizService: QuizService) { }
@@ -22,6 +24,8 @@ export class QuizController {
   @Post('/create-quiz')
   @UsePipes(ValidationPipe)
   @HttpCode(200)
+  @ApiCreatedResponse({ description: "Created Quiz object as response", type: Quiz })
+  @ApiBadRequestResponse({ description: "Quiz cannot be created" })
   async createQuiz(@Body() quizData: CreateQuizDto) {
     return await this.quizService.createNewQuiz(quizData)
   }

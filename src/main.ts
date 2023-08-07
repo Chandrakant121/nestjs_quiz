@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 
 // Cli Command
@@ -28,14 +29,26 @@ import { ValidationPipe } from '@nestjs/common';
 // npm i @nestjs/jwt passport-jwt
 //  npm i -D @types/passport-jwt  
 
+// Swagger
+// npm install --save @nestjs/swagger
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
-
+  app.enableCors()
   // We can use pipes globally
   // app.useGlobalPipes(new ValidationPipe({
   //   whitelist: true,
   //   transform: true,
   // }));
+  const config = new DocumentBuilder()
+    .setTitle('Quiz Manager')
+    .setDescription('The Quiz Manager API description')
+    .setVersion('1.0')
+    .addTag('Quiz')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
+  await app.listen(3000);
 }
 bootstrap();

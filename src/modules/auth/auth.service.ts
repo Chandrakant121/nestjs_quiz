@@ -27,12 +27,12 @@ export class AuthService {
     return user
   }
 
-  generateToken(user: any) {
+  generateToken(req: any) {
     return {
       access_token: this.jwtService.sign({
-        name: user.name,
-        sub: user.id,
-        email: user.email
+        name: req.user.name,
+        sub: req.user.id,
+        email: req.user.email
       })
     }
   }

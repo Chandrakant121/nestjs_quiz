@@ -2,7 +2,8 @@ import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common
 import { OptionService } from './option.service';
 import { QuestionService } from '../question/question.service';
 import { CreateOptionDto } from '../dto/create-option.dto';
-
+import { ApiTags, ApiCreatedResponse, ApiBadRequestResponse } from '@nestjs/swagger';
+@ApiTags('Option')
 @Controller('question/option')
 export class OptionController {
   constructor(private readonly optionService: OptionService,
@@ -10,6 +11,8 @@ export class OptionController {
 
   @Post('')
   @UsePipes(ValidationPipe)
+  @ApiCreatedResponse({ description: 'Created Option object as response' })
+  @ApiBadRequestResponse({ description: 'Option cannot be created' })
   async saveOptionToQuestion(@Body() createOption: CreateOptionDto) {
     const question = await this.questionService.findQuestionById(createOption.questionId)
     const option = await this.optionService.createOption(createOption, question)
