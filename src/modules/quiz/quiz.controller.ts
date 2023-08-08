@@ -3,7 +3,7 @@ import { QuizService } from './quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
 import { AdminRoleGuard } from '../auth/guard/admin-role.guard';
 import { RolesGuard } from '../auth/guard/roles.guard';
-import { Roles } from '../auth/guard/roles.decorator';
+import { Roles } from '../auth/decorator/roles.decorator';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 
 

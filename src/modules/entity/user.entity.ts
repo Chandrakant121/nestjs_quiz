@@ -1,6 +1,6 @@
 import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import * as bcrypt from "bcrypt"
-import { UserRoles } from "../auth/guard/user.enum";
+import { UserRoles } from "../auth/enum/user.enum";
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
