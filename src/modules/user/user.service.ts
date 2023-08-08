@@ -20,12 +20,19 @@ export class UserService {
     user.name = userRegister.name;
     user.email = userRegister.email;
     user.password = userRegister.password
+    user.role=userRegister.role
     return await user.save()
 
   }
 
   async getUserByEmail(email: string): Promise<User | undefined> {
     const user = await this.userRepository.findOne({ where: { email: email } })
+    return user
+  }
+
+
+  async getUserById(id: number): Promise<User | undefined> {
+    const user = await this.userRepository.findOne({ where: { id: id } })
     return user
   }
 }

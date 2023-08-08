@@ -9,6 +9,7 @@ export class UserController {
 
   @Post('/register')
   async userRegistration(@Body(ValidationPipe) userRegister: UserRegistrationDto) {
+    console.log(userRegister)
     return await this.userService.userRegistration(userRegister)
   }
   // @Post('/email')

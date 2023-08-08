@@ -1,8 +1,9 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { OptionService } from './option.service';
 import { QuestionService } from '../question/question.service';
 import { CreateOptionDto } from '../dto/create-option.dto';
-
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+@UseGuards(JwtAuthGuard)
 @Controller('question/option')
 export class OptionController {
   constructor(private readonly optionService: OptionService,
