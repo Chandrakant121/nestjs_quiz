@@ -1,6 +1,8 @@
 import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import * as bcrypt from "bcrypt"
 import { ApiProperty } from "@nestjs/swagger/dist";
+import { UserRoles } from "../auth/enum/user.enum";
+
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
   @ApiProperty({ description: "Primary key as user ID", example: 1 })
@@ -32,4 +34,7 @@ export class User extends BaseEntity {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt)
   }
+
+  @Column({ type: 'enum', enum: UserRoles, default: UserRoles.MEMBER })
+  role: UserRoles;
 }

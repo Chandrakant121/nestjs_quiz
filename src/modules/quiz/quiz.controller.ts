@@ -1,9 +1,15 @@
-import { Body, Controller, Get, HttpCode, Param, ParseIntPipe, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, ParseIntPipe, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
-import { ApiTags, ApiCreatedResponse, ApiBadRequestResponse } from '@nestjs/swagger';
+import { AdminRoleGuard } from '../auth/guard/admin-role.guard';
+import { RolesGuard } from '../auth/guard/roles.guard';
+import { Roles } from '../auth/decorator/roles.decorator';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Quiz } from '../entity/quiz.entity';
-@ApiTags('Quiz')
+import { ApiCreatedResponse, ApiBadRequestResponse } from '@nestjs/swagger';
+
+
+@UseGuards(JwtAuthGuard)
 @Controller('quiz')
 export class QuizController {
   constructor(private readonly quizService: QuizService) { }
@@ -24,6 +30,9 @@ export class QuizController {
   @Post('/create-quiz')
   @UsePipes(ValidationPipe)
   @HttpCode(200)
+  @UseGuards(RolesGuard)
+  // @UseGuards(AdminRoleGuard)
+  @Roles('admin')
   @ApiCreatedResponse({ description: "Created Quiz object as response", type: Quiz })
   @ApiBadRequestResponse({ description: "Quiz cannot be created" })
   async createQuiz(@Body() quizData: CreateQuizDto) {

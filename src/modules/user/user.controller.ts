@@ -13,6 +13,7 @@ export class UserController {
   @ApiCreatedResponse({ description: "Created User object as response", type: User })
   @ApiBadRequestResponse({ description: "User cannot register" })
   async userRegistration(@Body(ValidationPipe) userRegister: UserRegistrationDto) {
+    console.log(userRegister)
     return await this.userService.userRegistration(userRegister)
   }
 }

@@ -1,6 +1,7 @@
-import { IsEmail, IsNotEmpty, Length, Matches } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, Length, Matches } from "class-validator";
 import { PASSWORD_REGEX, PASSWORD_REGEX_ERR } from "src/app.utils";
 import { ApiProperty } from "@nestjs/swagger/dist";
+import { UserRoles } from "../auth/enum/user.enum";
 
 export class UserRegistrationDto {
   @ApiProperty({
@@ -35,4 +36,8 @@ export class UserRegistrationDto {
   @Length(8, 24)
   @Matches(PASSWORD_REGEX, { message: PASSWORD_REGEX_ERR })
   confirmPassword: string;
+
+  @IsOptional()
+  @IsEnum(UserRoles)
+  role: UserRoles;
 }
