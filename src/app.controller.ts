@@ -31,4 +31,14 @@ export class AppController {
     console.log("file", file)
     return "fileUpload"
   }
+
+  // @Post('file')
+  // @UseInterceptors(
+  //   FileInterceptor('file'),
+  // )
+  // async fileUpload(@UploadedFile() file) {
+  //   console.log("file", file)
+  //   return "fileUpload"
+  // }
+  
 }
