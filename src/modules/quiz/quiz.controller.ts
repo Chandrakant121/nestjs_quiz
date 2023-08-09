@@ -30,6 +30,7 @@ export class QuizController {
   @HttpCode(200)
   @UseGuards(RolesGuard)
   // @UseGuards(AdminRoleGuard)
+  // now only admin can create quiz
   @Roles('admin')
   async createQuiz(@Body() quizData: CreateQuizDto) {
     return await this.quizService.createNewQuiz(quizData)
