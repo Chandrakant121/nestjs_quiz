@@ -28,6 +28,10 @@ import { ValidationPipe } from '@nestjs/common';
 // npm i @nestjs/jwt passport-jwt
 //  npm i -D @types/passport-jwt  
 
+// file uploads or multer
+// npm i -D @types/multer
+
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);

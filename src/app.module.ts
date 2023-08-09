@@ -10,7 +10,7 @@ import { QuestionModule } from './modules/question/question.module';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { OptionModule } from './modules/option/option.module';
 import { typeOrmAsyncConfig } from './modules/config/typeorm.config';
-import { ApiTokenCheckMiddleware } from './modules/middleware/api-token';
+import { MulterModule } from '@nestjs/platform-express/multer';
 
 @Module({
   imports: [
@@ -24,6 +24,7 @@ import { ApiTokenCheckMiddleware } from './modules/middleware/api-token';
     QuestionModule,
     UserModule,
     AuthModule,
+    MulterModule.register({ dest: './uploads' })
   ],
   controllers: [AppController],
   providers: [AppService],
